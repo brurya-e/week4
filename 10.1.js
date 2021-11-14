@@ -30,14 +30,10 @@ const dashes = str =>{
     return temp;    
 }
 const firstWordUpperCase = (str, func)=>{
-    let i=0;
-    let temp = [];
-    while(i<str.length && str[i]!= ' ')
-        temp+=str[i++].toUpperCase();
-    temp += str.slice(i);
-    temp = func(temp);    
-    // temp+= '-'+ func(str.slice(i+1)); 
-    return temp;  
+    let temp = str.split(' ');
+    temp[0]=temp[0].toWordUpperCase;
+    let newStr = temp.join(' ');  
+    return func(newStr);
 }
 console.log(firstWordUpperCase('fgfg abnb bnb', dashes ));
 
