@@ -2,6 +2,8 @@
 // forEach method :
 
 const words = ['asap', 'byob', 'rsvp', 'diy'];
+const words2 = [5, 'asap', 'a', 'byob', 105, 'rsvp', 'diy'];
+
 const numbers = [20, 21, 22, 23, 24, 25, 26, 27];
 
 // 1. Write a function called doubleValues which accepts an
@@ -37,16 +39,17 @@ console.log(onlyEvenValues(numbers));
 const showFirstAndLast = arr => {
     const firstLast = [];
     arr.forEach(function (word) {
-        if (typeof word === 'string' || word instanceof String){
-            let temp = word.split('');
-            let newstr = temp[0] + temp[word.length - 1];
-            firstLast.push(newstr);
+        if (typeof word === 'string' || word instanceof String) {
+            if (word.length === 1)
+                firstLast.push(word);
+            else
+                firstLast.push(word[0] + word[word.length - 1]);
         }
     });
 
     return firstLast;
 }
-console.log(showFirstAndLast(words));
+console.log(showFirstAndLast(words2));
 
 // 4. Write a function called vowelCount which accepts a
 // string as an argument. The function should return an object
@@ -55,32 +58,31 @@ console.log(showFirstAndLast(words));
 // should be the count. e.g. {a:3, o:2,u:4}.
 // Should not be case sensitive.
 
-const isVovel = l =>{
-    return (l==='a' || l==='A' || l==='e' || l==='E' || l==='i' || l==='I' || l==='o' || l==='O' || l==='u' || l==='U')
+const isVovel = l => {
+    return (l === 'a' || l === 'A' || l === 'e' || l === 'E' || l === 'i' || l === 'I' || l === 'o' || l === 'O' || l === 'u' || l === 'U')
 }
 
 const vowelCount = str => {
     const vovel = {};
-    const newStr = str.split('');
+    const newStr = str.toLowerCase().split('');
     newStr.forEach(function (l) {
-        if(isVovel(l)){
-            if (vovel.hasOwnProperty(l))
-                vovel[l]+=1;
-            else 
-                vovel[l] =1 ;
-        }        
+        if (isVovel(l)) { //("aeiou".include(l))
+            if (vovel[l]) //vovel.hasOwnProperty(l)
+                vovel[l] += 1;
+            else
+                vovel[l] = 1;
+        }
     });
 
     return vovel;
 }
-console.log(vowelCount(words[0]));
+console.log(vowelCount('dsghdj sgdhgdsh eyyew oiuiou ad e uAA k'));
 
 // 5. Write a function capitalize that takes a string as an
 // argument and will return the whole string capitalized.
 const capitalize = str => {
-    const temp = str.split('');
-    const newStr = temp.map(function (l) {
-        return l.toUpperCase();     
+    const newStr = (str.split('')).map(function (l) {
+        return l.toUpperCase();
     });
     return newStr.join('');
 }
@@ -92,12 +94,11 @@ console.log(capitalize(words[0]));
 const shiftLetters = str => {
     const temp = str.split('');
     const newStr = temp.map(function (l) {
-        if(l==='z') 
+        if (l === 'z')
             return 'a';
-        if (l==='Z') 
-            return 'A';   
-        charcode = (l.charCodeAt()) + 1;
-        return String.fromCharCode(charcode);
+        if (l === 'Z')
+            return 'A';
+        return String.fromCharCode((l.charCodeAt()) + 1);
     });
     return newStr.join('');
 }
@@ -108,12 +109,10 @@ console.log(shiftLetters('abcz'));
 // capitalized. (you can use the fifth’s exercise's function to
 // keep it dry)
 const swapCase = str => {
-    const temp = str.split(' ');
-    const newStr = temp.map(function (word,ind) {
-        if (ind%2===0)
+    const newStr = (str.split(' ')).map(function (word, ind) {
+        if (ind % 2 === 0)
             return capitalize(word);
         return word;
-
     });
     return newStr.join(' ');
 }

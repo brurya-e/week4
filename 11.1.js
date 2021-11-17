@@ -41,12 +41,11 @@ const newReleases = [
 // method. Return from the function an array of objects. Each object
 // will contain the id and name of the specific movie.
 const idName = (obj) => {
-    let temp = [];
+    let res = [];
     obj.forEach(function (movie) {
-        let newElem = { id: movie.id, title: movie.title };
-        temp.push(newElem);
+        res.push({ id: movie.id, title: movie.title });
     });
-    return temp
+    return res
 }
 console.log(idName(newReleases));
 
@@ -54,10 +53,8 @@ console.log(idName(newReleases));
 // use the map method.
 
 const idNameByMap = (obj) => {
-    let temp = obj.map(function (movie) {
-        let newElem = { id: movie.id, title: movie.title };
-        return newElem;
+    return obj.map(function (movie) {
+        return { id: movie.id, title: movie.title };
     });
-    return temp;
 }
 console.log(idNameByMap(newReleases));

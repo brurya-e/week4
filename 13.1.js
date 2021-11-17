@@ -4,8 +4,8 @@
 // order.
 const numbers = [1, -5, 666, 2, 400, 11];
 
-const desc = numbers.sort((x,y)=> x-y);
-console.log (desc);
+numbers.sort((x,y)=> x-y);
+console.log (numbers);
 
-const aesc = numbers.sort((x,y)=> y-x);
-console.log (aesc);
+numbers.sort((x,y)=> y-x);
+console.log (numbers);

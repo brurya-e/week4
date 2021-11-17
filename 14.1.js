@@ -3,7 +3,7 @@ const numbers = [12, 3, 43, 7, 86, 90, 101, 5, 24, 30];
 // 1. max
 const max = numbers.reduce((max, currnVal) => {
     if (currnVal > max)
-        max = currnVal;
+        return currnVal;
     return max;
 });
 console.log(max);
@@ -17,5 +17,7 @@ const sumEven = numbers.reduce((sumEven, currnVal) => {
 console.log(sumEven);
 
 // 3. average
-const average = (numbers.reduce((sum, currnVal) => sum += currnVal)) / (numbers.length);
+const average = (numbers.reduce((sum, currnVal) => sum + currnVal)) / (numbers.length);
 console.log(average);
+const average2 = numbers.reduce(((avg, currnVal) => avg + currnVal/(numbers.length)),0);
+console.log(average2);

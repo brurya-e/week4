@@ -1,21 +1,6 @@
 // We are not getting the data as we want it. We are going to need to massage
 // the data.
 // Create separate functions for each questions below:
-
-// Example:
-// { hamburgers: 3,
-//  sausages: 1,
-//  salmon: 3,
-//  pike: 2,
-//  steak: 1,
-//  lamb: 2,
-//  tuna: 2,
-//  barracuda: 1,
-//  ham: 1,
-//  chicken: 1,
-//  bird: 1,
-//  rooster: 1,
-//  anchovies: 1 }
 const data = [
     {
         name: "John",
@@ -66,7 +51,7 @@ const onlyName = obj => {
     })
     return names;
 }
-console.log(onlyName(data));
+// console.log(onlyName(data));
 
 // 2. Create a function that returns all the objects that are born before 1990.
 
@@ -76,14 +61,14 @@ const bornYear = str => {
 }
 
 const bornBefore1990 = obj => {
-    const temp = [];
+    const res = [];
     obj.forEach(function (ele) {
         if (bornYear(ele.birthday) < "1990")
-            temp.push(ele);
+            res.push(ele);
     });
-    return temp;
+    return res;
 }
-console.log(bornBefore1990(data));
+// console.log(bornBefore1990(data));
 
 // 3. Create a function that returns an object of all the different foods from all
 // the objects as the key and the number of times that food is present in all the
@@ -95,21 +80,17 @@ const allFood = obj => {
     obj.forEach(function (ele) {
         let meats =ele.favoriteFoods.meats;
         let fish =ele.favoriteFoods.fish;
+        // let foods = ele.values(ele.favoriteFoods).flat();
+        // console.log(food);
+        // foods.forEach
         meats.forEach(function (typeFood) {
-            // for (let i = 0; i < typeFood.length; i++) {
-                if (food.hasOwnProperty(typeFood))
-                    food[typeFood] += 1;
-                else
-                    food[typeFood] = 1;
-            // }
+                // if (food.hasOwnProperty(typeFood))
+                //     food[typeFood] += 1;
+                // else
+                food[typeFood] = (food[typeFood] || 0) + 1;
         })
         fish.forEach(function (typeFood) {
-            // for (let i = 0; i < typeFood.length; i++) {
-                if (food.hasOwnProperty(typeFood))
-                    food[typeFood] += 1;
-                else
-                    food[typeFood] = 1;
-            // }
+            food[typeFood] = (food[typeFood] || 0) + 1;
         })
     });
     return food;

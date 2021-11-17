@@ -1,11 +1,9 @@
 const foods = ["falafel", "sabich", "hummus", "pizza with extrapineapple"];
-// a.1. Sort the array of strings from descending to ascending
-// order
-const desc = foods.sort();
-console.log(desc);
+// a.1. Sort the array of strings from descending to ascending order
+foods.sort();
+console.log(foods);
 
-// a.2. Sort the array of strings from ascending to descending
-// order.
+// a.2. Sort the array of strings from ascending to descending order.
 const aesc = (foods.sort()).reverse();
 console.log(aesc);
 

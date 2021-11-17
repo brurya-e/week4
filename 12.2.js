@@ -19,7 +19,7 @@ const candyStore = {
 // 1. Implement the following getCandy function:
 // The function should return the candy element with the specified id.
 function getCandy(candyStore, id){
-    return candyStore.candies.filter(ele => ele.id === id);
+    return candyStore.candies.find(ele => ele.id === id);
 }
 
 console.log(getCandy(candyStore,'as12f'));
